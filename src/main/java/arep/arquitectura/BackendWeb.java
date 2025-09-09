@@ -65,10 +65,10 @@ public class BackendWeb {
                 + "<html>\n"
                 + "<head>\n"
                 + "<meta charset=\"UTF-8\">\n"
-                + "<title>Title of the document</title>\n"
+                + "<title>Backend Web</title>\n"
                 + "</head>\n"
                 + "<body>\n"
-                + "<h1>Mi propio mensaje</h1>\n"
+                + "<h1>Backend Web Server</h1>\n"
                 + "</body>\n"
                 + "</html>\n";
     }

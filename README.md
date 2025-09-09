@@ -26,9 +26,13 @@ java -cp target/classes arep.arquitectura.FacadeWeb
 java -cp target/classes arep.arquitectura.BackendWeb
 ```
 
-## Pruebas de funcionamiento
+### Pruebas de funcionamiento.
 
 
 ![](/img/test.png)
+
+### Prueba de funcioanmiento en dos VM diferentes.
+
+![](/img/test-diferent-vm.png)
 
 ### Parcial de AREP Primer Corte.
