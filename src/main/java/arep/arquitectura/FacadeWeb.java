@@ -43,19 +43,14 @@ public class FacadeWeb {
                     break;
                 }
             }
-            outputLine = "HTTP/1.1 200 OK\r\n"
-                    + "Content-Type: text/html\r\n"
-                    + "\r\n"
-                    + "<!DOCTYPE html>\n"
-                    + "<html>\n"
-                    + "<head>\n"
-                    + "<meta charset=\"UTF-8\">\n"
-                    + "<title>Title of the document</title>\n"
-                    + "</head>\n"
-                    + "<body>\n"
-                    + "<h1>Mi propio mensaje</h1>\n"
-                    + "</body>\n"
-                    + "</html>\n";
+
+            Request request = new Request(inputLine);
+
+            if (request.getContent().equals("/setkv")){
+                outputLine = indexPage();
+            }else {
+                outputLine = getBadResponse();
+            }
             out.println(outputLine);
             out.close();
             in.close();
@@ -64,7 +59,59 @@ public class FacadeWeb {
         serverSocket.close();
     }
 
-    private String getBadResponse(){
-        return
+    private static String getBadResponse(){
+        return "HTTP/1.1 200 OK\r\n"
+                + "Content-Type: text/html\r\n"
+                + "\r\n"
+                + "<!DOCTYPE html>\n"
+                + "<html>\n"
+                + "<head>\n"
+                + "<meta charset=\"UTF-8\">\n"
+                + "<title>Bad request</title>\n"
+                + "</head>\n"
+                + "<body>\n"
+                + "<h1>Se Ha producido un Error</h1>\n"
+                + "</body>\n"
+                + "</html>\n";
+    }
+
+    private static String indexPage(){
+        return "HTTP/1.1 200 OK\r\n"
+                + "Content-Type: text/html\r\n"
+                + "\r\n" +
+                "<!DOCTYPE html>\n" +
+                "<html>\n" +
+                "\n" +
+                "<head>\n" +
+                "    <title>Form Example</title>\n" +
+                "    <meta charset=\"UTF-8\">\n" +
+                "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
+                "</head>\n" +
+                "\n" +
+                "<body>\n" +
+                "<h1>Form with GET</h1>\n" +
+                "<form action=\"/hello\">\n" +
+                "    <label for=\"name\">Name:</label><br>\n" +
+                "    <input type=\"text\" id=\"name\" name=\"name\" value=\"John\"><br><br>\n" +
+                "    <input type=\"button\" value=\"Submit\" onclick=\"loadGetMsg()\">\n" +
+                "</form>\n" +
+                "<div id=\"getrespmsg\"></div>\n" +
+                "\n" +
+                "<script>\n" +
+                "    function loadGetMsg() {\n" +
+                "        let nameVar = document.getElementById(\"name\").value;\n" +
+                "        const xhttp = new XMLHttpRequest();\n" +
+                "        xhttp.onload = function () {\n" +
+                "            document.getElementById(\"getrespmsg\").innerHTML =\n" +
+                "                this.responseText;\n" +
+                "        }\n" +
+                "        xhttp.open(\"GET\", \"/hello?name=\" + nameVar);\n" +
+                "        xhttp.send();\n" +
+                "    }\n" +
+                "</script>\n" +
+                "\n" +
+                "</body>\n" +
+                "\n" +
+                "</html>";
     }
 }
