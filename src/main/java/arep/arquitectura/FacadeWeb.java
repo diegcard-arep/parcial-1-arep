@@ -1,6 +1,9 @@
 package arep.arquitectura;
+import jdk.internal.net.http.HttpRequestImpl;
+
 import java.net.*;
 import java.io.*;
+
 
 
 /**
@@ -44,13 +47,31 @@ public class FacadeWeb {
                 }
             }
 
-            Request request = new Request(inputLine);
 
-            if (request.getContent().equals("/setkv")){
-                outputLine = indexPage();
-            }else {
-                outputLine = getBadResponse();
+/*
+            URL obj = new URL(inputLine);
+            HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+            con.setRequestMethod("GET");
+            con.setRequestProperty("User-Agent", HttpRequestImpl.USER_AGENT);
+
+            int responseCode = con.getResponseCode();
+            System.out.println("GET Response Code :: " + responseCode);
+
+            if (responseCode == HttpURLConnection.HTTP_OK) { // success
+                BufferedReader inm = new BufferedReader(new InputStreamReader(
+                        con.getInputStream()));
+                String inputLinee;
+                StringBuffer response = new StringBuffer();
+
+                while ((inputLinee = inm.readLine()) != null) {
+                    response.append(inputLinee);
+                }
+                inm.close();
+
             }
+            String cont = con.toString().split("/?")[1];*/
+            outputLine = indexPage();
+
             out.println(outputLine);
             out.close();
             in.close();
@@ -89,10 +110,12 @@ public class FacadeWeb {
                 "</head>\n" +
                 "\n" +
                 "<body>\n" +
-                "<h1>Form with GET</h1>\n" +
-                "<form action=\"/hello\">\n" +
-                "    <label for=\"name\">Name:</label><br>\n" +
-                "    <input type=\"text\" id=\"name\" name=\"name\" value=\"John\"><br><br>\n" +
+                "<h1>Form para cambiar el valor almacenado de una llave dando su valor</h1>\n" +
+                "<form action=\"/setkv\">\n" +
+                "    <label for=\"name\">Key:</label><br>\n" +
+                "    <input type=\"text\" id=\"key\" name=\"key\" value=\"Key\"><br><br>\n" +
+                "    <label for=\"name\">Value:</label><br>\n" +
+                "    <input type=\"text\" id=\"value\" name=\"key\" value=\"Value\"><br><br>\n" +
                 "    <input type=\"button\" value=\"Submit\" onclick=\"loadGetMsg()\">\n" +
                 "</form>\n" +
                 "<div id=\"getrespmsg\"></div>\n" +
