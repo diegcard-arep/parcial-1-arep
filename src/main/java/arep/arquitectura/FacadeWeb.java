@@ -104,7 +104,7 @@ public class FacadeWeb {
                 "<html>\n" +
                 "\n" +
                 "<head>\n" +
-                "    <title>Form Example</title>\n" +
+                "    <title>Form Facade</title>\n" +
                 "    <meta charset=\"UTF-8\">\n" +
                 "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
                 "</head>\n" +
@@ -112,23 +112,24 @@ public class FacadeWeb {
                 "<body>\n" +
                 "<h1>Form para cambiar el valor almacenado de una llave dando su valor</h1>\n" +
                 "<form action=\"/setkv\">\n" +
-                "    <label for=\"name\">Key:</label><br>\n" +
-                "    <input type=\"text\" id=\"key\" name=\"key\" value=\"Key\"><br><br>\n" +
-                "    <label for=\"name\">Value:</label><br>\n" +
-                "    <input type=\"text\" id=\"value\" name=\"key\" value=\"Value\"><br><br>\n" +
+                "    <label for=\"key\">Key:</label><br>\n" +
+                "    <input type=\"text\" id=\"key\" name=\"key\" value=\"key\"><br><br>\n" +
+                "    <label for=\"value\">Value:</label><br>\n" +
+                "    <input type=\"text\" id=\"value\" name=\"value\" value=\"value\"><br><br>\n" +
                 "    <input type=\"button\" value=\"Submit\" onclick=\"loadGetMsg()\">\n" +
                 "</form>\n" +
                 "<div id=\"getrespmsg\"></div>\n" +
                 "\n" +
                 "<script>\n" +
                 "    function loadGetMsg() {\n" +
-                "        let nameVar = document.getElementById(\"name\").value;\n" +
+                "        let keyVar = document.getElementById(\"key\").value;\n" +
+                "\tlet valueVar = document.getElementById(\"value\").value;\n" +
                 "        const xhttp = new XMLHttpRequest();\n" +
                 "        xhttp.onload = function () {\n" +
                 "            document.getElementById(\"getrespmsg\").innerHTML =\n" +
                 "                this.responseText;\n" +
                 "        }\n" +
-                "        xhttp.open(\"GET\", \"/hello?name=\" + nameVar);\n" +
+                "        xhttp.open(\"GET\", \"/setkv?key=\" + keyVar + \"&\" + \"value=\" +valueVar);\n" +
                 "        xhttp.send();\n" +
                 "    }\n" +
                 "</script>\n" +
