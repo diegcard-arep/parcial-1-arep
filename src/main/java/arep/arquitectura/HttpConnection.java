@@ -6,6 +6,11 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+/**
+ * Represet the HttpConnection
+ *
+ * @author Diego Cardenas
+ */
 public class HttpConnection {
 
     private static final String USER_AGENT = "Mozilla/5.0";

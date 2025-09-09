@@ -28,6 +28,13 @@ public class Request {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Extract the query params from the url
+     * @param request url to extract query params
+     * @return Hap of the query params with key and value
+     * @throws MalformedURLException expertion from URL
+     */
     public Map<String, String> extracRequestParams(String request) throws MalformedURLException {
         try{
             url = new URL(request);
@@ -53,6 +60,10 @@ public class Request {
         return new HashMap<>();
     }
 
+    /**
+     * Get url
+     * @return url
+     */
     public static URL getUrl() {
         return url;
     }

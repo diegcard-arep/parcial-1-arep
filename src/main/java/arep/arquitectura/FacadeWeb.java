@@ -7,7 +7,7 @@ import java.io.*;
 
 
 /**
- * Representa una respuesta
+ * Represent de Facade Web Server with page html and with a params
  *
  * @author Diego Cardenas
  */
